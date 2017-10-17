@@ -44,6 +44,7 @@ class LogStash::Filters::Ruby < LogStash::Filters::Base
       filter_matched(event)
     rescue Exception => e
       @logger.error("Ruby exception occurred: #{e}")
+      @logger.error("Backtrace: #{e.backtrace}")
       event.tag("_rubyexception")
     end
   end
